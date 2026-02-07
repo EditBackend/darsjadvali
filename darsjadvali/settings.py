@@ -18,7 +18,7 @@ SECRET_KEY = 'django-insecure-iu8d84smxy!vs#=w*)q*rt9y)r*fot%ply=uoxxvad2^bxw7l0
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "darsjadvali-2.onrender.com",
+    "darsjadvali-3.onrender.com",
     "localhost",
     "127.0.0.1",
 ]
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'darsjadvali.urls'
 CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://darsjadvali-2.onrender.com",
+    "https://darsjadvali-3.onrender.com",
 ]
 
 TEMPLATES = [
