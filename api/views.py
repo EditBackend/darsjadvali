@@ -21,7 +21,12 @@ def timetable(request):
     ).order_by("start_time")
 
     serializer = LessonSerializer(lessons, many=True)
-    return Response(serializer.data)
+
+    return Response({
+        "day_type": day_type,
+        "count": lessons.count(),
+        "results": serializer.data
+    })
 
 
 class RoomViewSet(ModelViewSet):

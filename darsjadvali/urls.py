@@ -16,7 +16,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -28,26 +27,29 @@ from drf_yasg import openapi
 schema_view = get_schema_view(
     openapi.Info(
         title="Dars Jadvali API",
-        default_version='v1',
+        default_version="v1",
         description="O‘quv markazi uchun dars jadvali API",
         contact=openapi.Contact(email="admin@example.com"),
     ),
     public=True,
-    permission_classes=(permissions.AllowAny,),
+    permission_classes=[permissions.AllowAny],
 )
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('api.urls')),
+    path("admin/", admin.site.urls),
 
-    # SWAGGER
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0)),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0)),
+    # API
+    path("api/", include("api.urls")),
+
+    # 🔥 SWAGGER (frontendchi uchun FULL)
+    path("swagger/", schema_view.with_ui("swagger", cache_timeout=0)),
+    path("swagger.json", schema_view.without_ui(cache_timeout=0)),
+    path("redoc/", schema_view.with_ui("redoc", cache_timeout=0)),
 ]
 
 
-# STATIC & MEDIA (DEBUG MODE)
+# STATIC & MEDIA
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

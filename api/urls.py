@@ -6,7 +6,7 @@ from .views import (
     CourseViewSet,
     GroupViewSet,
     LessonViewSet,
-    timetable
+    timetable,
 )
 
 router = DefaultRouter()
